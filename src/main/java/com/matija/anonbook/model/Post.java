@@ -27,4 +27,35 @@ public class Post {
     @OneToMany
     private List<Komentar> komentari;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getPotpis() {
+        return potpis;
+    }
+
+    public void setPotpis(String potpis) {
+        this.potpis = potpis;
+    }
+
+    public List<Komentar> getKomentari() {
+        return komentari;
+    }
+
+    public void setKomentari(List<Komentar> komentari) {
+        this.komentari = komentari;
+    }
 }
