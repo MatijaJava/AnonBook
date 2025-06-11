@@ -20,7 +20,10 @@ public class Komentar {
     @ManyToOne
     private Post post;
 
+    @Column(length = 300)
     private String text;
+
+    @Column(name = "potpis_komentara")
     private String potpis;
 
 }
