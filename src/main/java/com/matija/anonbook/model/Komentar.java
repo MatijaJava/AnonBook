@@ -1,5 +1,6 @@
 package com.matija.anonbook.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class Komentar {
     private Integer id;
 
     @ManyToOne
+    @JsonIgnore
     private Post post;
 
     @Column(length = 300)
