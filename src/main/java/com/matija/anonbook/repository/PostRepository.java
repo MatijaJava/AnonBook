@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
-    @Query("SELECT p FROM Post p LEFT JOIN FETCH p.komentari")
+    @Query("SELECT p FROM Post p LEFT JOIN FETCH p.komentari ORDER BY p.datum DESC")
     List<Post> findAllFetchKomentare();
 }

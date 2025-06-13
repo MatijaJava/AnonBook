@@ -7,6 +7,7 @@ import com.matija.anonbook.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +38,8 @@ public class PostService {
     }
 
     public void sacuvajPost(Post noviPost) {
+        noviPost.setDatum(LocalDateTime.now());
 
-        //provera
         if (noviPost.getText() == null || noviPost.getText().isEmpty()) throw new RuntimeException("Text ne sme biti prazan!");
 
         postRepository.save(noviPost);
