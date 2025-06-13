@@ -26,4 +26,21 @@ public class KomentarService {
 
         komentarRepository.save(komentar);
     }
+
+    public Komentar findById(Integer id) {
+        return komentarRepository.getReferenceById(id);
+    }
+
+    public Komentar edit(Integer id, String text) {
+        Komentar komentar = findById(id);
+        komentar.setText(text);
+        return komentarRepository.save(komentar);
+    }
+
+    public Integer delete(Integer id) {
+        Komentar komentar = findById(id);
+        Integer postId = komentar.getPost().getId();
+        komentarRepository.delete(komentar);
+        return postId;
+    }
 }

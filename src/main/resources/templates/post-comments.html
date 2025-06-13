@@ -20,7 +20,10 @@
     <div>
         <h5>Komentari</h5>
         <div th:each="komentar : ${post.komentari}" class="card mb-2">
-            <div class="card-body" th:text="${komentar.text}"></div>
+            <div class="card-body">
+                <p th:text="${komentar.text}"></p>
+                <a th:href="@{'/kom/edit-comment/' + ${komentar.id}}" class="btn btn-sm btn-warning">Edit</a>
+            </div>
         </div>
     </div>
 </div>
