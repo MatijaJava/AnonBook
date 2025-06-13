@@ -7,16 +7,17 @@
 </head>
 <body class="bg-light py-4">
 
+<!-- Same head and Bootstrap links as before -->
 <div class="container">
     <h1 class="mb-4 text-primary">Post Feed</h1>
 
     <div th:each="post : ${postovi}" class="card mb-3 shadow-sm">
         <div class="card-body">
-            <p class="card-text" th:text="${post.text}"></p>
-            <p class="text-muted">- <span th:text="${post.potpis}"></span></p>
-            <div th:if="${post.komentari != null}">
+            <a th:href="@{'/post/' + ${post.id}}" class="text-decoration-none text-dark">
+                <p class="card-text" th:text="${post.text}"></p>
+                <p class="text-muted">- <span th:text="${post.potpis}"></span></p>
                 <span class="badge bg-info text-dark" th:text="'Komentara: ' + ${#lists.size(post.komentari)}"></span>
-            </div>
+            </a>
         </div>
     </div>
 </div>

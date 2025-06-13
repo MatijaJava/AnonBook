@@ -32,10 +32,13 @@ public class PostRest {
         return "post-feed";
     }
 
-    @GetMapping("/{postId}")
-    public Post vratiJedanPost(@PathVariable Integer postId){
-        return postService.vratiJedanPost(postId);
+    @GetMapping("/{id}")
+    public String prikaziKomentare(@PathVariable Integer id, Model model) {
+        Post post = postService.vratiJedanPost(id);
+        model.addAttribute("post", post);
+        return "post-comments";
     }
+
 
 
 }
