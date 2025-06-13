@@ -18,7 +18,7 @@
             <textarea id="text" name="text" class="form-control" rows="3" th:text="${komentar.text}"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="/post-feed" class="btn btn-secondary">Cancel</a>
+        <a href="/post" class="btn btn-secondary">Cancel</a>
     </form>
     <form th:action="@{'/kom/delete-comment/' + ${komentar.id}}" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
