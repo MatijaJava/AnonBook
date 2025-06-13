@@ -3,29 +3,33 @@ package com.matija.anonbook.rest;
 import com.matija.anonbook.model.Post;
 import com.matija.anonbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 
-@RestController
+@Controller
 @RequestMapping("/post")
 public class PostRest {
 
     @Autowired
     PostService postService;
 
-    @GetMapping("/hello")
+    @GetMapping
     public String hello() {
-        return "Hello World";
+        return "redirect:/post/svi-postovi";
     }
 
-    @GetMapping("/sviPostovi")
-    public List<Post> vratiPostove(){
-        return postService.vratiPostove();
+    @GetMapping("/svi-postovi")
+    public String vratiPostove(Model model){
+        List<Post> postovi = postService.vratiPostove();
+        model.addAttribute("postovi", postovi);
+
+        return "post-feed";
     }
 
     @GetMapping("/{postId}")
