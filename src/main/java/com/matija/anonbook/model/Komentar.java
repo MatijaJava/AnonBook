@@ -22,7 +22,7 @@ public class Komentar {
     @JsonIgnore
     private Post post;
 
-    @Column(length = 300)
+    @Column(length = 300, nullable = false)
     private String text;
 
     @Column(name = "potpis_komentara")

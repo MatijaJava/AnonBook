@@ -19,7 +19,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 500)
+    @Column(length = 500, nullable = false)
     private String text;
 
     private String potpis;
