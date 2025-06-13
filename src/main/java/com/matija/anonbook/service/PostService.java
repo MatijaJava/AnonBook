@@ -35,4 +35,12 @@ public class PostService {
             return null;
         }
     }
+
+    public void sacuvajPost(Post noviPost) {
+
+        //provera
+        if (noviPost.getText() == null || noviPost.getText().isEmpty()) throw new RuntimeException("Text ne sme biti prazan!");
+
+        postRepository.save(noviPost);
+    }
 }

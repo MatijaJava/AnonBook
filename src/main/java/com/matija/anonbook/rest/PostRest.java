@@ -5,9 +5,7 @@ import com.matija.anonbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +35,20 @@ public class PostRest {
         Post post = postService.vratiJedanPost(id);
         model.addAttribute("post", post);
         return "post-comments";
+    }
+
+    @GetMapping("/new")
+    public String prikaziFormuZaNoviPost(Model model) {
+        return "new-post";
+    }
+
+    @PostMapping("/new")
+    public String kreirajNoviPost(@RequestParam String text, @RequestParam(required = false) String potpis) {
+        Post noviPost = new Post();
+        noviPost.setText(text);
+        noviPost.setPotpis(potpis);
+        postService.sacuvajPost(noviPost);
+        return "redirect:/post";
     }
 
 
