@@ -16,8 +16,13 @@ public class KomentarRest {
     private KomentarService komentarService;
 
     @PostMapping("/dodajKomentar/post/{postId}")
-    public void napraviKomentar(@RequestBody Komentar komentar, @PathVariable Integer postId) {
+    public String napraviKomentar(@RequestParam String text, @RequestParam String potpis, @PathVariable Integer postId) {
+        Komentar komentar = new Komentar();
+        if (potpis == null || potpis.isEmpty()) potpis = "anonimno";
+        komentar.setText(text);
+        komentar.setPotpis(potpis);
         komentarService.napraviKomentar(komentar, postId);
+        return "redirect:/post/" + postId;
     }
 
     @GetMapping("/edit-comment/{id}")
@@ -39,5 +44,7 @@ public class KomentarRest {
         Integer postId = komentarService.delete(id);
         return "redirect:/post/" + postId;
     }
+
+
 
 }
