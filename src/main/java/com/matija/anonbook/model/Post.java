@@ -24,7 +24,7 @@ public class Post {
 
     private String potpis;
 
-    @OneToMany
+    @OneToMany(mappedBy = "post", cascade = CascadeType.DETACH)
     private List<Komentar> komentari;
 
 

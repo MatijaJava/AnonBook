@@ -19,7 +19,7 @@ public class PostService {
     private KomentarRepository komentarRepository;
 
     public List<Post> vratiPostove() {
-        return postRepository.findAll();
+        return postRepository.findAllFetchKomentare();
     }
 
     public Post vratiJedanPost(Integer postId) {
